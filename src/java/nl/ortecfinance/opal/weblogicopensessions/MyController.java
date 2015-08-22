@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.omnifaces.cdi.ViewScoped;
+import org.omnifaces.util.Faces;
 
 //@SessionScoped // works fine session are short and memory is cleaned up
 @ViewScoped
@@ -38,9 +39,13 @@ public class MyController implements Serializable {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 
         HttpSession session = request.getSession();
-        session.setAttribute("largeArray", largeArray);
-        session.setAttribute("largeList", iList);
+        //   session.setAttribute("largeArray", largeArray);
+        //   session.setAttribute("largeList", iList);
 
+   //     Faces.setSessionAttribute("largeArray", largeArray);
+        //    Faces.setSessionAttribute("largeList", iList);
+        Faces.getFlash().put("largeArray", largeArray);
+        Faces.getFlash().put("largeList", iList);
         session.invalidate();
     }
 
