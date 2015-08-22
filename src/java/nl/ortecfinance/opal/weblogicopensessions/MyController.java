@@ -42,10 +42,10 @@ public class MyController implements Serializable {
         //   session.setAttribute("largeArray", largeArray);
         //   session.setAttribute("largeList", iList);
 
-   //     Faces.setSessionAttribute("largeArray", largeArray);
-        //    Faces.setSessionAttribute("largeList", iList);
-        Faces.getFlash().put("largeArray", largeArray);
-        Faces.getFlash().put("largeList", iList);
+        Faces.setSessionAttribute("largeArray", largeArray);
+        Faces.setSessionAttribute("largeList", iList);
+  //      Faces.getFlash().put("largeArray", largeArray);
+        //     Faces.getFlash().put("largeList", iList);
         session.invalidate();
     }
 
